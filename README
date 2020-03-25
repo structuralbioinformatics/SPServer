@@ -29,6 +29,7 @@ python SPServerPPI.py -i INPUT -r RECEPTOR_CHAIN -l LIGAND_CHAIN -s PPI_SOURCE -
 
 #### ADD GIT CHANGES ####
 
+git status
 git add README
 git commit -m "README change"
-git push -u origin master 
+git push -u origin master
