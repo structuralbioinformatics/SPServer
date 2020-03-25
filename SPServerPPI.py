@@ -27,7 +27,6 @@ def parse_user_arguments(*args, **kwds):
     parser.add_argument('-j','--job_id',dest='job_id',action = 'store', help = """ Job ID. """)
     parser.add_argument('-p','--pot_type',dest='pot_type',action = 'store', default = 'CB', help = """CB or MIN atom-atom distance potential (default=CB)""")
     parser.add_argument('-c','--crashes',dest='crashes',action = 'store_true', help = 'Flag to use calculate the atoms crashing between the two structures of the PPI.')
-    parser.add_argument('-cp','--crashes_path',dest='crashes_path',action = 'store', default='/var/www/html/SPServer_src/collision_detection_program', help = 'Path to the collision_detection_program')
 
     options=parser.parse_args()
 
@@ -63,7 +62,6 @@ def calculate_sps_ppi(options):
     spserverppi.extract_ppi()
     if options.crashes:
         spserverppi.crashes = True
-        spserverppi.crashes_path = options.crashes_path
     if options.ppi_source == 'pdb_separated':
         spserverppi.prepare_ppi_separated()
     elif options.ppi_source == 'pdb_together':
@@ -92,7 +90,7 @@ class SPServerPPI(object):
         self.structure_to_chain_receptor = {}
         self.structure_to_chain_ligand = {}
         self.crashes = False
-        self.crashes_path = None
+        self.crashes_path = os.path.abspath(os.path.join(os.path.dirname(__file__), 'collision_detection_program'))
         self.xml_result = '<?xml version="1.0" encoding="utf-8"?>\n<xml>\n'
         self.xml_errors = '<?xml version="1.0" encoding="utf-8"?>\n<xml>\n'
         self.xml_err_file = os.path.join(output_dir, '{}.err.xml'.format(job_id))
