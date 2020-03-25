@@ -25,4 +25,10 @@ python SPServerPPI.py -i INPUT -r RECEPTOR_CHAIN -l LIGAND_CHAIN -s PPI_SOURCE -
 -j: Job ID.
 -p: Definition of atom-atom minimum distance. It can be CB or MIN.
 -c: If the argument is introduced, it calculates the crashes between the interacting proteins.
--cp: Path to the crashes program.
+
+
+#### ADD GIT CHANGES ####
+
+git add README
+git commit -m "README change"
+git push -u origin master 
