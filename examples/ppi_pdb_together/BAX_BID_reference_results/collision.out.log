@@ -1,0 +1,49 @@
+ natoms?
+  primer residuo?
+  ultimo residuo?
+ filename input?
+ filename output?
+ constante para radio?
+ natoms?
+  primer residuo?
+  ultimo residuo?
+ filename input?
+ filename output?
+ constante para radio?
+ natoms?
+  primer residuo?
+  ultimo residuo?
+ filename input?
+ filename output?
+ constante para radio?
+ natoms?
+  primer residuo?
+  ultimo residuo?
+ filename input?
+ filename output?
+ constante para radio?
+ natoms?
+  primer residuo?
+  ultimo residuo?
+ filename input?
+ filename output?
+ constante para radio?
+ natoms?
+  primer residuo?
+  ultimo residuo?
+ filename input?
+ filename output?
+ constante para radio?
+/home/quim/PHD/Projects/SPServer/standalone/collision_detection_program/bin/pdbgepol </home/quim/PHD/Projects/SPServer/standalone/examples/ppi_pdb_together/data.text
+/home/quim/PHD/Projects/SPServer/standalone/collision_detection_program/bin/gepol </home/quim/PHD/Projects/SPServer/standalone/examples/ppi_pdb_together/output.tex > /home/quim/PHD/Projects/SPServer/standalone/examples/ppi_pdb_together/gepol.text
+/home/quim/PHD/Projects/SPServer/standalone/collision_detection_program/bin/pdbgepol </home/quim/PHD/Projects/SPServer/standalone/examples/ppi_pdb_together/data.text
+/home/quim/PHD/Projects/SPServer/standalone/collision_detection_program/bin/gepol </home/quim/PHD/Projects/SPServer/standalone/examples/ppi_pdb_together/output.tex > /home/quim/PHD/Projects/SPServer/standalone/examples/ppi_pdb_together/gepol.text
+/home/quim/PHD/Projects/SPServer/standalone/collision_detection_program/bin/pdbgepol </home/quim/PHD/Projects/SPServer/standalone/examples/ppi_pdb_together/data.text
+/home/quim/PHD/Projects/SPServer/standalone/collision_detection_program/bin/gepol </home/quim/PHD/Projects/SPServer/standalone/examples/ppi_pdb_together/output.tex > /home/quim/PHD/Projects/SPServer/standalone/examples/ppi_pdb_together/gepol.text
+/home/quim/PHD/Projects/SPServer/standalone/collision_detection_program/bin/pdbgepol </home/quim/PHD/Projects/SPServer/standalone/examples/ppi_pdb_together/data.text
+/home/quim/PHD/Projects/SPServer/standalone/collision_detection_program/bin/gepol </home/quim/PHD/Projects/SPServer/standalone/examples/ppi_pdb_together/output.tex > /home/quim/PHD/Projects/SPServer/standalone/examples/ppi_pdb_together/gepol.text
+/home/quim/PHD/Projects/SPServer/standalone/collision_detection_program/bin/pdbgepol </home/quim/PHD/Projects/SPServer/standalone/examples/ppi_pdb_together/data.text
+/home/quim/PHD/Projects/SPServer/standalone/collision_detection_program/bin/gepol </home/quim/PHD/Projects/SPServer/standalone/examples/ppi_pdb_together/output.tex > /home/quim/PHD/Projects/SPServer/standalone/examples/ppi_pdb_together/gepol.text
+/home/quim/PHD/Projects/SPServer/standalone/collision_detection_program/bin/pdbgepol </home/quim/PHD/Projects/SPServer/standalone/examples/ppi_pdb_together/data.text
+/home/quim/PHD/Projects/SPServer/standalone/collision_detection_program/bin/gepol </home/quim/PHD/Projects/SPServer/standalone/examples/ppi_pdb_together/output.tex > /home/quim/PHD/Projects/SPServer/standalone/examples/ppi_pdb_together/gepol.text
+[SUCCESS] Execution completed!

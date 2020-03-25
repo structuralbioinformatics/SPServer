@@ -1,0 +1,5 @@
+The $DSSP_PATH environment variable is not defined, trying local library dssp
+/var/www/html/sbi/SPServer_src/BioLib/Fold/SplitPotentialsFold.py:219: RuntimeWarning: invalid value encountered in double_scalars
+  Zenergies[potential_type] = (real_energies[potential_type]-energies_mean)/energies_std
+The $DSSP_PATH environment variable is not defined, trying local library dssp
+The $DSSP_PATH environment variable is not defined, trying local library dssp

@@ -1,0 +1,22 @@
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+__pycache__
+
+# Sublime Files #
+#################
+*.sublime-*
+
+# Python pyc files #
+####################
+*.pyc
+
+doc/
+test/

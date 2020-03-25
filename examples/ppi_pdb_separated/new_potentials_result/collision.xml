@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml>
+ <protein>
+  <id>3kxb.pdb</id>
+  <chain_a>3kxb.r_merged.pdb</chain_a>
+  <chain_b>3kxb.l_merged.pdb</chain_b>

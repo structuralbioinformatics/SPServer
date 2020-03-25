@@ -1,0 +1,15 @@
+At line 33 of file pdbgepol.f (unit = 15, file = '¸Çh+')
+Fortran runtime error: File '/home/quim/PHD/Projects/SPServer/standalone/examples/ppi_pdb_separated/input.tex' does not exist
+sh: /home/quim/PHD/Projects/SPServer/standalone/examples/ppi_pdb_separated/output.text: No such file or directory
+Traceback (most recent call last):
+  File "/home/quim/PHD/Projects/SPServer/standalone/collision_detection_program/collision_detection_from_list.py", line 406, in <module>
+    main(sys.argv[1:])
+  File "/home/quim/PHD/Projects/SPServer/standalone/collision_detection_program/collision_detection_from_list.py", line 344, in main
+    Triangle_A , Proteins_A , Area_A = statments(A,B,1,output_path)
+  File "/home/quim/PHD/Projects/SPServer/standalone/collision_detection_program/collision_detection_from_list.py", line 257, in statments
+    atom_A,normal_A,pdb_A  = formating(openfile(A), output_path)
+  File "/home/quim/PHD/Projects/SPServer/standalone/collision_detection_program/collision_detection_from_list.py", line 240, in formating
+    atom_data,normal_data = gepol(atoms,number,gepol_input,output_path)
+  File "/home/quim/PHD/Projects/SPServer/standalone/collision_detection_program/collision_detection_from_list.py", line 197, in gepol
+    os.remove(gepol_file)
+OSError: [Errno 2] No such file or directory: '/home/quim/PHD/Projects/SPServer/standalone/examples/ppi_pdb_separated/gepol.text'

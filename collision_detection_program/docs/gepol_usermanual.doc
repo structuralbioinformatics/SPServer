@@ -1,0 +1,255 @@
+       ------------------------------------
+       ----------- USER MANUAL ------------
+       ------------------------------------
+
+       =============================================================
+
+       GEPOL/87 (GEometría POlihedro,1987)
+
+       =============================================================
+
+*** Written by
+
+       J.L. Pascual-Ahuir and E. Silla
+       Departamento de Química Física.
+       Facultad de Química.
+       Universidad de Valencia.
+       C/Dr.Moliner 50.
+       Burjassot (Valencia) 46100
+       SPAIN
+       
+       Phone number: 6-3630011  ext. 341
+
+       J. Tomasi
+       Dipartamento di Chimica.
+       Università di Pisa.
+       Via Risorgimento, 35-I 
+       56100 Pisa
+       ITALY
+
+       R. Bonaccorsi.
+       Istituto di Chimica Quantistica e Energetica Moleculare (CNR)
+       Via Risorgimento, 35-I 
+       56100 Pisa
+       ITALY
+       
+*** Grants
+
+       It has been granted by Comision Asesora Cientifica Y Tecnica
+       (CACYT) of Spain, proyect 714/84.
+
+
+*** References
+
+       J.L.Pascual-Ahuir, E.Silla, J.Tomasi y R.Bonacorsi.
+       Electrostatic Interaction of Solute with a Continuum.
+       Improved Description of the Cavity and of the Surface Cavity
+       Bound Charge Distribution.
+       Journal of Computational Chemistry, Vol.8, No.6,778-787(1987)
+
+
+
+
+*** Aim
+
+       This program calculates the envelop surface for a molecule, as a
+       points distribution, and computes its  correspondent area and volume.
+       As data the coordinates of atoms, the radii assigned to them and
+       the solvent radius (Probe radius) are needed.
+       
+       It calculates the three kind of envelop surfaces:
+
+         - THE VAN DER WAALS MOLECULAR SURFACE. It is the surface 
+       resulting from a set of intersecting spheres with radii of van
+       der Waals, centred on selected nuclei of the molecule (Figure 1).
+
+         - THE ACCESSIBLE MOLECULAR SURFACE. It was defined by
+       B.Lee and F.M.Richards (J.MOL.BIOL.55(1971)379-400. It is the
+       surface defined by the center of the solvent sphere (probe sphere)
+       when it rolls around the van der waals surface. This program
+       calculate this surface adding the probe radius to every radius
+       atom (Figure 2).
+
+         - THE MOLECULAR SURFACE. It was defined by F.M.Richards 
+       (Ann. Rev. Biophys. Bioeng.,6 (1977)151-176).This surface is
+       composed of two parts: THE CONTACT SURFACE and THE REENTRANT
+       SURFACE. He defines the contact surface to be that part of
+       the van der waals surface of each atom which is accessible 
+       to a probe sphere of a given radius. Also the reentrant
+       surface is define as the inward-facing part of the probe sphere 
+       when it is simultaneously in contact with more than one atom
+       (see figure 3).The present program calculates the Molecular 
+       Surface creating a set of new spheres locating among the original
+       spheres defined at the input geomtry. At this proces we call 
+       'smoothing' of the surface.
+ 
+       
+
+
+       
+*** Computacional especifications
+
+       This program is written in FORTRAN 77 and runed over VAX VMS.
+              
+*** Input
+       
+       File    FOR005
+
+       The input is composed of the next records:
+     -- 1st record.-- Format (80A1)
+            
+            Title
+
+  
+     -- 2nd record.-- Format(4(3A,1X))
+         
+         It is composed of four character variables. The options
+         must be written with capital letters.
+      
+         Variable         Options
+     
+         SUAVE             CON   Smoothing.
+                           SIN   No smoothing.
+
+         VECTOR            VES   Print the points and the corresponding vectors
+                                 on the surface.
+                           VEN   No print.
+           
+         SUMA              SUM   Adding the probe radius plus the van der
+                                 Waals radi of atoms.
+                           NSU   No adding.
+
+         OPESF             SFY   Print information about spheres.
+                           SFN   No print.
+
+         If the van der Waals surface is requerided, SUAVE will be
+         SIN and SUMA will be NSU.
+         If you want the accesible surface, SUAVE=SIN and SUMA=SUM
+         If you want the molecular surface, SUAVE=CON and SUMA=NSU
+
+
+     -- 3rd record -- Format(I2,2F10.5)
+                
+         Variable
+           
+           NDIV     It specifies the division level for the triangles on the
+                    surface. Each of the spheres is divided in 60 
+                    triangles if NDIV=1. If NDIV=2 in 240 triangles.
+                    If NDIV=3 in 960, if NDIV=4 in 3840 and if NDIV=
+                    5 in 15360 triangles. 
+                    The accuracy improve when NDIV raise.
+                    The cpu time  increase with NDIV.
+                    We think that NDIV equal to 3 is a good value (reference B
+                    is concerned with study about this point).
+
+           RD       It is the probe radious.
+                    It is only necessary if SUAVE=CON or SUMA=SUM.
+           
+           FRADIO   This parameter controls the new spheres creation
+                    (smoothing).One may introduced values in the range from
+                    0.0 to 1.0. It is only need if SUAVE=CON.
+                    The accuracy improves when the FRADIO value decreases.
+                    We recomend values are about 0.55 (see reference C)
+                    Really the program controls the smoothing with the 
+                    next three parameters (see reference A): OMEGA,FRO 
+                    and RET. The value of OMEGA is assigned into the 
+                    program as a DATA Fortran sentence. At this version
+                    OMEGA=50.0. To FRO the program  assignes the same value 
+                    that FRADIO (at reference A FRO is F). The program gives
+                    to RET (at reference A RET is the Minimal Radious)
+                    the value resulting by multiply FRADIO by RAT.
+                    RAT is the average of the all atoms radii given at 
+                    INPUT.
+                           
+
+
+     -- 4th record -- Format(I8)                 
+          
+         Variable   
+         
+           NATOM        Number of atoms.
+
+
+     -- 5th record -- Format(4F10.5,I2)
+        
+           One card by atom.
+
+         Variable
+
+           XE        Coordinate X of the atom. At the same units that RD.
+           YE        Coordinate Y of the atom. "   "   "    "     "   "
+           ZE        Coordinate Z of the atom. "   "   "    "     "   "
+           RE        Radious of the sphere centred on atom.
+                     At the same units that RD.
+           USE    0  This atom is not used for the surface.
+                  1  This atom is used for the surface.
+
+
+
+*** Output
+
+       The output of this program consists of three files.
+    
+       In each of these files the next items are written.
+          - Title
+          - SUAVE value given at input.
+          - VECTOR "     "    "    "
+          - SUMA   "     "    "    "
+          - OPESF  "     "    "    "
+          - NDIV   "     "    "    "
+          - RD     "     "    "    "
+          - FRADIO "     "    "    "
+          - OMEGA  "    assigned by the program.
+
+    -- 1st file -- Abstract. FOR006
+
+         At this file there is an abstract of  results and data.
+         
+           - NATOM
+           - Print the first record of the atoms coordinates. 
+           - Number of atoms used to create the surface.
+           - Number of atoms not used to create the surface.
+           - Number of spheres created.
+           - Number of spheres with area equal to 0.
+           - Area
+           - Volume
+           - Number of points generated over the surface.
+
+    -- 2nd file -- Spheres information. FOR007
+       
+           There is one record by sphere with ten variables.
+
+           Variable
+           - SN      Sphere number.
+           - AREA    The sphere area belonguing to envelope surface.
+           - X       Coordinate X of sphere.
+           - Y       Coordinate Y of sphere.
+           - Z       coordinate Z of sphere.
+           - R       Radious of sphere.
+           - AREA(R) The initial sphere area.AREA(R)=4*pi*R**2. 
+                     If USE=0 then AREA(R)=0
+                     When the new sphere is into another sphere
+                     the program assigns it 0 for USE and then 
+                     AREA(R) is 0.
+           - NP      Number of points on this sphere.
+           - If this sphere  has been built in between two previously 
+             calculated or initial spheres,the two last variables have
+             the number of these spheres.
+
+
+    -- 3rd file -- Points and vector information. FOR008
+           
+           There is one record by point with eight values.
+
+           Variable.
+           - SN     It is the number of sphere, at which the point belong.
+           - X      Coordinate X of point.
+           - Y      Coordinate Y of point.
+           - Z      Coordinate Z of point.
+           - Area   Area assigned at the point.
+           - CX     Component X of the vector.
+           - CY     Component Y of the vector.
+           - CZ     Component Z of the vector.
+                    The vector is perpendicular to the surface, having
+                    a unit module, and pointing from inside-outside to the 
+                    surface.
