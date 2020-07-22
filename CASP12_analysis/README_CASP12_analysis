@@ -1,0 +1,119 @@
+#############################
+# SPSERVER: CASP12 ANALYSIS #
+#############################
+
+#--------------------------------#
+# 1. ORGANIZE THE CASP12 DATASET #
+#--------------------------------#
+
+We used the CASP12 dataset of KORP:
+
+https://chaconlab.org/modeling/korp/down-korp/item/rcd-v111-linux-copy
+
+We have put all the structures in CASP12DCall inside the following folder:
+
+/Users/quim/Documents/DATA/SPServer/CASP12_analysis/data/CASP12DCall
+
+
+#-------------------------------------#
+# 2. CALCULATE THE SCORES OF SPSERVER #
+#-------------------------------------#
+
+First, we copy everything to the cluster:
+
+scp -r /Users/quim/Documents/DATA/SPServer/CASP12_analysis hydra:/users/sbi/quim
+
+Then, we go to the cluster and run the analysis:
+
+module load Python/2.7.11
+python /users/sbi/quim/CASP14/scripts/run_CASP_targets_SPServer_cluster.py -i /users/sbi/quim/CASP12_analysis/data -o /users/sbi/quim/CASP12_analysis/outputs --dummy_dir /users/sbi/quim/CASP12_analysis/dummy --logs_dir /users/sbi/quim/CASP12_analysis/logs &> /users/sbi/quim/CASP12_analysis/CASP12_analysis_log.txt
+
+We copy the results in my home:
+
+scp hydra:/users/sbi/quim/CASP12_analysis/outputs/CASP12DCall/*/*.pdb.xml /Users/quim/Documents/DATA/SPServer/CASP12_analysis/outputs/SPServer_results
+scp hydra:/users/sbi/quim/CASP12_analysis/outputs/CASP12DCall/*/*.pdb.err.xml /Users/quim/Documents/DATA/SPServer/CASP12_analysis/outputs/SPServer_errors
+
+We check errors:
+
+There are 8 models that give an error: 
+T0873D1_s407m2.pdb, T0873D1_s407m3.pdb, T0873D1_s407m4.pdb, T0873D1_s407m5.pdb, T0891D1_s407m2.pdb, T0891D1_s407m3.pdb, T0891D1_s407m4.pdb, T0891D1_s407m5.pdb
+
+They give the following error:
+<error><number>3</number><fold>T0873D1_s407m2.pdb</fold><description>The input file "T0873D1_s407m2.pdb" could not be read. Please, check that it is correct.</description></error>
+
+The file T0873D1_s407m2.pdb has a tab where there should be spaces at the last lines:
+ATOM   3545  CB  ALA   501	48.330  46.036  17.073  1.00  0.00    T0873D1s407m2
+Same happened in all the files. I fixed them and sent it again to score:
+
+scp -r /Users/quim/Documents/DATA/SPServer/CASP12_analysis/data/fixed_files hydra:/users/sbi/quim/CASP12_analysis/data
+module load Python/2.7.11
+python /users/sbi/quim/CASP14/scripts/run_CASP_targets_SPServer_cluster.py -i /users/sbi/quim/CASP12_analysis/data -o /users/sbi/quim/CASP12_analysis/outputs --dummy_dir /users/sbi/quim/CASP12_analysis/dummy --logs_dir /users/sbi/quim/CASP12_analysis/logs &> /users/sbi/quim/CASP12_analysis/CASP12_analysis_log.txt
+scp hydra:/users/sbi/quim/CASP12_analysis/outputs/fixed_files/*/*.pdb.xml /Users/quim/Documents/DATA/SPServer/CASP12_analysis/outputs/SPServer_results
+scp hydra:/users/sbi/quim/CASP12_analysis/outputs/fixed_files/*/*.pdb.err.xml /Users/quim/Documents/DATA/SPServer/CASP12_analysis/outputs/SPServer_errors
+
+Copy the scores calculated by Ruben:
+scp -r rabin:/sbi/users/interchange/ruben/Quim/PROSA2 /Users/quim/Documents/DATA/SPServer/CASP12_analysis/outputs/SPServer_results/Ruben
+
+
+#-------------------------------------------#
+# 3. CALCULATE THE SCORES OF PROSA AND DOPE #
+#-------------------------------------------#
+
+We calculate PROSA scores using the following scripts:
+
+residue_score.py
+zscore.py
+
+We calculate DOPE scores using the following scripts:
+
+DOPE_analyzer.py
+
+
+#----------------------------#
+# 3. PARSE THE GLOBAL SCORES #
+#----------------------------#
+
+We parse the PROSA, DOPE, SPServer, GDT, QCS and TM score using the following scripts:
+
+DOPE_Extractor.py
+PROSA_extract.py
+GDT_Extractor.py
+SPS_Extractor.py
+
+We parse everything into one file using the following script:
+
+python /Users/quim/Dropbox/UPF/PHD/Projects/SPServer/CASP12_analysis/scripts/parse_casp_results.py -i /Users/quim/Documents/DATA/SPServer/CASP12_analysis/outputs -d /Users/quim/Documents/DATA/SPServer/CASP12_analysis/data -o /Users/quim/Documents/DATA/SPServer/CASP12_analysis/results
+
+
+#--------------------------------------------------#
+# 4. MAKE BOOTSTRAPPING AND CALCULATE CORRELATIONS #
+#--------------------------------------------------#
+
+We make the bootstrapping to calculate the correlations using the following script:
+
+python /Users/quim/Dropbox/UPF/PHD/Projects/SPServer/CASP12_analysis/scripts/make_bootstrapping.py -i /Users/quim/Documents/DATA/SPServer/CASP12_analysis/results -d /Users/quim/Documents/DATA/SPServer/CASP12_analysis/data -o /Users/quim/Documents/DATA/SPServer/CASP12_analysis/results
+
+
+#-----------------------#
+# 5. PLOT GLOBAL SCORES #
+#-----------------------#
+
+We make the correlation plots of the global scores and the plot of score vs. length using the following script:
+
+python /Users/quim/Dropbox/UPF/PHD/Projects/SPServer/CASP12_analysis/scripts/plot_global_scores.py -i /Users/quim/Documents/DATA/SPServer/CASP12_analysis/results -o /Users/quim/Documents/DATA/SPServer/CASP12_analysis/results
+
+
+#----------------------------------#
+# 6. PARSE AND PLOT RESIDUE SCORES #
+#----------------------------------#
+
+We parse the SPServer and PROSA residue scores using these scripts:
+
+SPS_residues.py
+PROSA_extract.py
+
+We parse all the scores into unique files using this script. We also plot the histograms:
+
+python /Users/quim/Dropbox/UPF/PHD/Projects/SPServer/CASP12_analysis/scripts/plot_residue_scores.py -i /Users/quim/Documents/DATA/SPServer/CASP12_analysis/outputs -o /Users/quim/Documents/DATA/SPServer/CASP12_analysis/results
+
+
