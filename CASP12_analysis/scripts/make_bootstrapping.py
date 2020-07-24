@@ -14,7 +14,7 @@ def main():
     """
     From a folder of SPServer results, creates a results file for CASP.
     python /home/quim/PHD/Projects/CASP14/scripts/make_bootstrapping.py -i -d -o
-    python /Users/quim/Dropbox/UPF/PHD/Projects/SPServer/CASP12_analysis/scripts/make_bootstrapping.py -i /Users/quim/Documents/DATA/SPServer/CASP12_analysis/results -d /Users/quim/Documents/DATA/SPServer/CASP12_analysis/data -o /Users/quim/Documents/DATA/SPServer/CASP12_analysis/results
+    python /Users/quim/Dropbox/UPF/PHD/Projects/SPServer/SPServer/CASP12_analysis/scripts/make_bootstrapping.py -i /Users/quim/Documents/DATA/SPServer/CASP12_analysis/results -d /Users/quim/Documents/DATA/SPServer/CASP12_analysis/data -o /Users/quim/Documents/DATA/SPServer/CASP12_analysis/results
     """
     options = parse_options()
     make_bootstrapping(options)
@@ -189,7 +189,7 @@ def make_bootstrapping(options):
     #mask = np.ones_like(means)
     #mask[np.tril_indices_from(mask)] = False
     #ax = sns.heatmap(means, mask=mask, annot=True, cmap=cmap, center=0, cbar_kws={'label': 'Mean Pearson Correlation'}, vmin=-1, vmax=1)
-    ax = sns.heatmap(means, annot=True, cmap=cmap, center=0, cbar_kws={'label': 'Mean Pearson Correlation'}, vmin=-1, vmax=1)
+    ax = sns.heatmap(means, annot=True, cmap=cmap, center=0, cbar_kws={'label': 'Mean Pearson Correlation'}, vmin=-1, vmax=1, fmt='.2f')
     plt.setp(ax.get_xticklabels(), rotation=45, ha="right",
              rotation_mode="anchor")
     plt.yticks(rotation=0)
