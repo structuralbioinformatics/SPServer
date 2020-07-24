@@ -82,7 +82,7 @@ SPS_Extractor.py
 
 We parse everything into one file using the following script:
 
-python /Users/quim/Dropbox/UPF/PHD/Projects/SPServer/CASP12_analysis/scripts/parse_casp_results.py -i /Users/quim/Documents/DATA/SPServer/CASP12_analysis/outputs -d /Users/quim/Documents/DATA/SPServer/CASP12_analysis/data -o /Users/quim/Documents/DATA/SPServer/CASP12_analysis/results
+python /Users/quim/Dropbox/UPF/PHD/Projects/SPServer/SPServer/CASP12_analysis/scripts/parse_casp_results.py -i /Users/quim/Documents/DATA/SPServer/CASP12_analysis/outputs -d /Users/quim/Documents/DATA/SPServer/CASP12_analysis/data -o /Users/quim/Documents/DATA/SPServer/CASP12_analysis/results
 
 
 #--------------------------------------------------#
@@ -91,7 +91,7 @@ python /Users/quim/Dropbox/UPF/PHD/Projects/SPServer/CASP12_analysis/scripts/par
 
 We make the bootstrapping to calculate the correlations using the following script:
 
-python /Users/quim/Dropbox/UPF/PHD/Projects/SPServer/CASP12_analysis/scripts/make_bootstrapping.py -i /Users/quim/Documents/DATA/SPServer/CASP12_analysis/results -d /Users/quim/Documents/DATA/SPServer/CASP12_analysis/data -o /Users/quim/Documents/DATA/SPServer/CASP12_analysis/results
+python /Users/quim/Dropbox/UPF/PHD/Projects/SPServer/SPServer/CASP12_analysis/scripts/make_bootstrapping.py -i /Users/quim/Documents/DATA/SPServer/CASP12_analysis/results -d /Users/quim/Documents/DATA/SPServer/CASP12_analysis/data -o /Users/quim/Documents/DATA/SPServer/CASP12_analysis/results
 
 
 #-----------------------#
@@ -100,7 +100,7 @@ python /Users/quim/Dropbox/UPF/PHD/Projects/SPServer/CASP12_analysis/scripts/mak
 
 We make the correlation plots of the global scores and the plot of score vs. length using the following script:
 
-python /Users/quim/Dropbox/UPF/PHD/Projects/SPServer/CASP12_analysis/scripts/plot_global_scores.py -i /Users/quim/Documents/DATA/SPServer/CASP12_analysis/results -o /Users/quim/Documents/DATA/SPServer/CASP12_analysis/results
+python /Users/quim/Dropbox/UPF/PHD/Projects/SPServer/SPServer/CASP12_analysis/scripts/plot_global_scores.py -i /Users/quim/Documents/DATA/SPServer/CASP12_analysis/results -o /Users/quim/Documents/DATA/SPServer/CASP12_analysis/results
 
 
 #----------------------------------#
@@ -114,6 +114,6 @@ PROSA_extract.py
 
 We parse all the scores into unique files using this script. We also plot the histograms:
 
-python /Users/quim/Dropbox/UPF/PHD/Projects/SPServer/CASP12_analysis/scripts/plot_residue_scores.py -i /Users/quim/Documents/DATA/SPServer/CASP12_analysis/outputs -o /Users/quim/Documents/DATA/SPServer/CASP12_analysis/results
+python /Users/quim/Dropbox/UPF/PHD/Projects/SPServer/SPServer/CASP12_analysis/scripts/plot_residue_scores.py -i /Users/quim/Documents/DATA/SPServer/CASP12_analysis/outputs -o /Users/quim/Documents/DATA/SPServer/CASP12_analysis/results
 
 
