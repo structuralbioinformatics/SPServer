@@ -2,7 +2,7 @@
 
 ### 2020 - Structural Bioinformatics Group - Universitat Pompeu Fabra
 
-This is the standalone version of **SPServer** (http://sbi.upf.edu/spserver), a web server to assess the quality of protein folds and protein-protein interactions using knowledge-based potentials (also known as statistical potentials).
+This is the standalone version of **SPServer** (https://spserver.upf.edu), a web server to assess the quality of protein folds and protein-protein interactions using knowledge-based potentials (also known as statistical potentials).
 
 ## Getting Started
 
